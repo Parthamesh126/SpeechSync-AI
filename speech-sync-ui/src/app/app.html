@@ -1,0 +1,119 @@
+<div class="container">
+  <header>
+    <div>
+      <h1>SpeechSync AI</h1>
+      <p>Real-time multilingual speech transcription</p>
+    </div>
+    <span class="status">
+      {{ (listening || geminiListening) ? '● Listening' : '● Ready' }}
+    </span>
+  </header>
+
+  <section class="panel">
+    <h2>Live transcription</h2>
+
+    <label for="language">Recognition language</label>
+    <select id="language" [(ngModel)]="language">
+      <option value="hi-IN">Hindi</option>
+      <option value="en-IN">English (India)</option>
+      <option value="en-US">English (US)</option>
+      <option value="mr-IN">Marathi</option>
+      <option value="gu-IN">Gujarati</option>
+      <option value="bn-IN">Bengali</option>
+      <option value="ta-IN">Tamil</option>
+      <option value="te-IN">Telugu</option>
+      <option value="kn-IN">Kannada</option>
+      <option value="ml-IN">Malayalam</option>
+      <option value="pa-IN">Punjabi</option>
+      <option value="ur-PK">Urdu</option>
+    </select>
+
+    <div class="transcript">
+      <textarea
+        [(ngModel)]="transcript"
+        placeholder="Your recognized speech appears here. You can also type or edit text..."
+        rows="6"></textarea>
+    </div>
+
+    
+    <div class="actions">
+      <button (click)="startGeminiListening()" [disabled]="geminiListening || listening">
+        ✨ Start Gemini transcription
+      </button>
+
+      <button class="secondary" (click)="stopGeminiListening()"
+              [disabled]="!geminiListening">
+        Stop Gemini
+      </button>
+      <button (click)="startListening()" [disabled]="listening">
+        🎙 Start recording
+      </button>
+
+      <button class="secondary" (click)="stopListening()"
+              [disabled]="!listening">
+        Stop recording
+      </button>
+
+      <button class="secondary" (click)="speakTranscript()"
+              [disabled]="!transcript.trim() || speaking">
+        🔊 Listen
+      </button>
+
+      <button class="secondary" (click)="stopSpeaking()"
+              [disabled]="!speaking">
+        ⏹ Stop audio
+      </button>
+
+      <button class="save" (click)="saveTranscript()">
+        {{ editingId !== null ? 'Update transcript' : 'Save transcript' }}
+      </button>
+
+      <button class="secondary" (click)="clearTranscript()">
+        Clear
+      </button>
+    </div>
+
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+    <p class="hint">Allow microphone access when your browser asks.</p>
+  </section>
+
+  <section class="panel">
+    <div class="history-heading">
+      <div>
+        <h2>Transcription history</h2>
+        <p>Saved recordings and transcripts</p>
+      </div>
+      <button class="secondary" (click)="loadHistory()">Refresh</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Transcript</th>
+            <th>Language</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of history">
+            <td>{{ item.id }}</td>
+            <td class="transcript-cell">{{ item.transcript }}</td>
+            <td>{{ item.language }}</td>
+            <td>{{ item.createdAt | date:'medium' }}</td>
+            <td class="row-actions">
+              <button class="secondary" (click)="edit(item)">Edit</button>
+              <button class="danger" (click)="delete(item)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="history.length === 0">
+            <td colspan="5" class="empty">No saved transcriptions yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

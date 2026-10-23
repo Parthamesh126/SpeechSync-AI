@@ -1,0 +1,23 @@
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+coverage/
+
+# Java / Maven
+target/
+build/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+application-local.properties
+application-prod.properties
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

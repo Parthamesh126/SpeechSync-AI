@@ -1,0 +1,97 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1c2940;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 22px;
+}
+
+header, .history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+header { margin-bottom: 28px; }
+
+h1 { margin: 0; font-size: 30px; }
+h2 { margin: 0 0 8px; font-size: 21px; }
+p { color: #64748b; }
+header p, .history-heading p { margin-bottom: 0; }
+
+.panel {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 18px #0f172a08;
+}
+
+.status {
+  background: #e8f7ee;
+  color: #167342;
+  padding: 9px 14px;
+  border-radius: 24px;
+  white-space: nowrap;
+}
+
+label { display: block; margin: 18px 0 8px; }
+
+select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+  background: white;
+}
+
+select { max-width: 260px; }
+textarea { resize: vertical; margin-top: 14px; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: #2459d3;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+button:disabled { opacity: .45; cursor: not-allowed; }
+.secondary { background: #e9eef6; color: #24344d; }
+.save { background: #16804a; }
+.danger { background: #fde8e8; color: #b42318; }
+.hint { font-size: 13px; }
+.error { color: #b42318; }
+
+.table-wrap { overflow-x: auto; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 13px 12px; border-bottom: 1px solid #e8edf4; }
+th { background: #f8fafc; font-size: 13px; color: #526079; }
+.transcript-cell { min-width: 200px; max-width: 360px; overflow-wrap: anywhere; }
+.row-actions { white-space: nowrap; }
+.row-actions button { margin: 3px; }
+.empty { text-align: center; padding: 28px; color: #64748b; }
+
+@media (max-width: 600px) {
+  .container { padding: 18px 12px; }
+  .panel { padding: 16px; }
+  header { align-items: flex-start; flex-direction: column; }
+}
