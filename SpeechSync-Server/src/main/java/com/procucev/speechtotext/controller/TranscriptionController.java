@@ -21,7 +21,7 @@ import com.procucev.speechtotext.service.TranscriptionService;
 
 @RestController
 @RequestMapping("/api/transcriptions")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://speechsync-ai.vercel.app")
 public class TranscriptionController {
 
     private final TranscriptionService service;

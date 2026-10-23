@@ -7,7 +7,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/gemini")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://speechsync-ai.vercel.app")
 public class GeminiTokenController {
 
     private final GeminiTokenService tokenService;
