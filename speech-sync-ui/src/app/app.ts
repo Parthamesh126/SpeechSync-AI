@@ -321,7 +321,7 @@ export class AppComponent implements OnInit, OnDestroy {
       });
 
       // Ask our Spring Boot backend for a short-lived token.
-      const response = await fetch('http://localhost:8080/api/gemini/token', {
+      const response = await fetch('https://speechsync-api.onrender.com/api/gemini/token', {
         method: 'POST'
       });
 

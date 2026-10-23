@@ -13,7 +13,7 @@ export interface Transcription {
 @Injectable({ providedIn: 'root' })
 export class TranscriptionService {
   private readonly api =
-    'http://localhost:8080/api/transcriptions';
+    'https://speechsync-api.onrender.com/api/transcriptions';
 
   constructor(private http: HttpClient) {}
 
